@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails de vélo{% endblock %}
+
+{% block body %}
+      <section class="container-fluid p-4" id="apropos">
+        <div class="row text-center">
+          <div class="col-12 p-2 col-md-7 col-lg-7 col-xl-7"  data-aos="fade-right" data-aos-duration="1800">
+          <img src="{{vich_uploader_asset(velo, 'imageFile')}}" alt="vélo" id="portrait" class="w-100">     
+          </div>
+          <div class="col-12 p-2 col-md-5 col-lg-5 col-xl-5" data-aos="fade-left" data-aos-duration="2000">
+            <h3 class="mt-5">VÉLOCITY</h3>
+            <p>{{velo.model}}</p>
+            <P>{{velo.prix}}€</P>
+            <a href="{{ path ('panier_add', {id: velo.id})}}" class="btn btn-primary mb-5">AJOUTER AU PANIER</a>
+          </div> 
+        </div>
+      </section>
+
+ <section> 
+     <strong class="mt-5 ms-2">Caractéristiques techniques :</strong>
+     <ul>
+      <li>Assistance électrique : Oui</li>
+      <li>Matière cadre : Aluminium</li>
+       <li>Taille des roues : {{velo.roues.tailleroue }}</li>
+      <li>Capacité batterie : {{velo.capacitebatterie.capacitebatterie }}</li> 
+      <li>Nombre de vitesses : {{velo.vitesse.nombrevitesse }}</li>
+      <li>Position de la batterie : {{velo.positiondebatterie.positionbatterie}}</li>
+      <li>Motorisation: {{velo.motor.taillemotor }}</li>  
+    </ul>
+</section> 
+<section> 
+  <strong class="mt-5 ms-2">Conseils de sécurité :</strong>
+  <ul>
+   <li>Portez un casque de vélo : le port du casque est crucial pour la sécurité de votre tête en cas de chute ou d'accident.</li>
+   <li>Familiarisez-vous avec les règles de circulation : assurez-vous de connaître les règles de circulation pour les cyclistes, telles que les règles de priorité et de circulation à droite.</li>
+   <li>Respectez les limites de vitesse : évitez de rouler trop vite, surtout dans les zones où il y a des piétons ou des obstacles.</li>
+   <li>Faites attention aux piétons : soyez attentif aux piétons et aux autres cyclistes sur la route. Utilisez votre sonnette ou votre klaxon pour les avertir de votre présence.</li>
+   <li>Faites attention aux conditions météorologiques : adaptez votre conduite aux conditions météorologiques. Évitez de rouler sur une route glissante ou mouillée.</li>
+   <li>Assurez-vous que votre vélo est en bon état de fonctionnement, en vérifiant régulièrement les freins, les pneus et les lumières.</li>
+  </ul>
+</section>  
+<section class="container-fluid p-4" id="apropos">
+  <div class="row text-left">
+    <div class="col-12 p-2 col-md-7 col-lg-7 col-xl-7">
+      <strong>Description</strong>
+      <p>{{velo.description}}</p>
+          <strong>Garantie</strong>
+          <p>Nous sommes heureux que vous ayez choisi d'acheter un vélo électrique chez nous. Nous sommes convaincus que vous apprécierez la qualité et la performance de votre nouveau vélo. Nous voulons vous offrir une tranquillité d'esprit totale en sachant que votre vélo est protégé par une garantie de 2 ans.
+          Notre garantie couvre tous les défauts de fabrication et de matériaux pendant une période de deux ans à compter de la date d'achat. Si vous rencontrez un problème avec votre vélo électrique pendant cette période, veuillez nous contacter immédiatement pour que nous puissions régler la situation rapidement et efficacement.
+          La garantie ne couvre pas les dommages causés par une utilisation abusive, un accident, une négligence, une modification ou une réparation effectuée par une personne autre que notre personnel autorisé. Nous vous recommandons de consulter le manuel d'utilisation de votre vélo électrique pour vous assurer que vous l'utilisez correctement et en toute sécurité. </p> 
+    </div>
+    <div class="col-12 p-2 col-md-5 col-lg-5 col-xl-5 d-none d-md-block" data-aos="fade-left" data-aos-duration="2000" id="contenu">
+    <img src="{{vich_uploader_asset(velo, 'imageFile')}}" alt="velo" id="portrait"  class="w-100 rotate-on-load">
+    </div>
+    </div>
+  </div>
+</section>       
+
+{% endblock %}
+{% block javascripts %}
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init();
+  var image = document.getElementById("portrait");
+  image.addEventListener("load", function() {
+    image.classList.add("loaded");
+  });  
+</script>
+{% endblock %}

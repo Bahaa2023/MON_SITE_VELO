@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}formulaire modification{% endblock %}
+
+{% block body %}
+ <div class="container">
+  <h1>modifier un vélo</h1>
+    {{form_start(velomodification)}}
+     <div class="row">
+     <div class="col-3">
+    {{form_row(velomodification.model)}} 
+</div>
+     <div class="col-3">
+      {{form_row(velomodification.prix)}}
+    </div>
+    <div class="col">
+      {{form_row(velomodification.imageFile)}}
+    </div>
+    <div class="col-3">
+      {{form_row(velomodification.description)}}
+    </div>
+    <div class="col-3">
+      {{form_row(velomodification.categorie)}}
+    </div>
+    <div class="col-3">
+      {{form_row(velomodification.roues)}}
+    </div>
+    <div class="col-3">
+      {{form_row(velomodification.capacitebatterie)}}
+    </div>
+    <div class="col-3">
+      {{form_row(velomodification.positiondebatterie)}}
+    </div>
+    <div class="col-3">
+      {{form_row(velomodification.motor)}}
+    </div>
+    <div class="col-3">
+      {{form_row(velomodification.vitesse)}}
+    </div>
+</div>
+  <input type="submit" class="btn btn-primary mt-2 mb-4" value="Enregistrer"/>
+{{form_end(velomodification)}}
+</div>
+{% endblock %}

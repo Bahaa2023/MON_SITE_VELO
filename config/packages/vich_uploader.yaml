@@ -1,0 +1,8 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+       velos:
+           uri_prefix: /images/velos
+           upload_destination: '%kernel.project_dir%/public/images/velos'
+           namer: Vich\UploaderBundle\Naming\SmartUniqueNamer

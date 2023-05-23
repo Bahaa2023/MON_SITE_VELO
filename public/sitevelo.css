@@ -1,0 +1,198 @@
+/* 
+
+.nav-link {
+    color:#060984;
+    font-size: 1.6rem;
+    transition: 0.15s ease;
+    
+}
+
+.btn-groupdropdown{
+    color:#060984;
+    font-size: 1.4rem;
+}
+.nav-link:hover {
+  color:#f64489;
+  transform: scale(1.05);
+}
+  .col:hover {
+    transform: scale(1.05);
+    transition: all 0.2s ease-in-out;
+  }
+
+ 
+
+.navbar-brand {
+    transition: 0.15s ease;
+    
+}
+
+.navbar-brand:hover {
+    transform: scale(1.05);
+}
+
+main p {
+    font-size: 1.5rem;
+    line-height: 3rem;
+    margin-left: 1rem;
+}
+
+main h2,h1 {
+    text-align: center;
+   color:#6a52e1;
+
+} 
+
+
+  
+
+/* must change the way i target the font-size using something else instead of .col-10 */
+
+ .col-10 {
+    font-size: 1.6rem;
+    margin:auto;
+} 
+
+
+
+
+.carousel-control-prev-icon {
+    background-color:#a5bcd8;
+  }
+
+  .carousel-control-next-icon {
+    background-color:#a5bcd8;
+  }
+
+
+  .nav-linktext-center {
+    color:#060984;
+    font-size: 1.4rem;
+    transition: 0.15s ease;
+    
+  }
+  
+  .nav-linktext-center:hover {
+    color:#f64489;
+    transform: scale(1.05);
+  }  */
+
+
+/* below is the code added from good copy practice top */
+
+
+  .rotate-on-load {
+    transform: rotateY(180deg);
+    transition: transform 1s ease-in-out;
+  }
+  .text {
+     text-align: left;
+  }
+@media (max-width: 767px) {
+  .row {
+    flex-direction: column-reverse;
+  }
+  .rotate-on-load {
+    transform: rotateY(180deg);
+    transition: transform 1s ease-in-out;
+  }
+  
+/* below is what i added from good copy buttom */
+  /* @media (max-width: 767px) {
+    #contenu {
+      display: none;
+    }
+
+    .col-12 {
+      margin-bottom: 2rem;
+    }
+  } */
+  /*below is what determines along with the flex direction the order when image goes on top or buttom*/
+  .col-12:nth-child(odd) {
+    order: 2;
+  }
+}; 
+
+.rotate-on-load {
+    transform: rotateY(180deg);
+    transition: transform 1s ease-in-out;
+  }
+  
+
+  
+    #contenu {
+      display: none;
+    }
+
+    .col-12 {
+      margin-bottom: 2rem;
+    }
+  
+
+    
+   
+
+
+    
+
+
+
+
+
+.nav-link {
+  color:#060984;
+  font-size: 1.6rem;
+  transition: 0.15s ease;
+  
+}
+.btn-groupdropdown{
+  color:#060984;
+  font-size: 1.4rem;
+}
+.nav-link:hover {
+color:#f64489;
+transform: scale(1.05);
+}
+.col:hover {
+  transform: scale(1.05);
+  transition: all 0.2s ease-in-out;
+}
+
+
+
+/* I left the code below in purpose to see in the future how can i change the color of the links in the footer but keep the same hover */
+
+/* footer.nav-link{
+  color:rgb(246, 238, 238);
+  font-size: 1.4rem;
+  transition: 0.15s ease};
+
+footer.nav-link:hover {
+  color:#f64489;
+  transform: scale(1.05);
+    } */
+
+.navbar-brand {
+  transition: 0.15s ease;
+  
+}
+
+.navbar-brand:hover {
+  transform: scale(1.05);
+}
+
+main p {
+  font-size: 1.5rem;
+  line-height: 3rem;
+  margin-left: 1rem;
+}
+
+main h2,h1 {
+  text-align: center;
+ color:#6a52e1;
+ 
+
+}
+
+
+

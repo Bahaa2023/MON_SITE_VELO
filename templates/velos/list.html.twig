@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+{% block title %}velo list{% endblock %}
+
+{% block body %} 
+
+  {% for message in app.flashes('add_new_velo') %}
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Félicitation</strong> {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+        </button>
+      </div>
+  {% endfor %} 
+
+  {% for message in app.flashes('velo_modification_request') %}
+     <div class="alert alert-success alert-dismissible fade show" role="alert">
+       <strong>Bonjour</strong> {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+        </button>
+     </div>
+  {% endfor %}
+
+  {% for message in app.flashes('velo_supprimer_request') %}
+     <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong>Bonjour</strong> {{ message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+    </button>
+  </div>
+  {% endfor %}
+
+  
+
+<div class="container mt-4 mb-4">
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Model</th>
+              <th scope="col">Description</th>
+              <th scope="col">Categorie</th>  
+               {# <th scope="col">Taille de roue</th>   #}
+                {# <th scope="col">Capcité de Batterie</th>   #}
+                {# <th scope="col">Position de Batterie</th>   #}
+                {# <th scope="col">Taille de Motor</th>   #}
+                 {# <th scope="col">Vitesse</th>   #}
+            <th scope="col">Prix</th>
+            {# <th scope="col">Image</th> #}
+            <th scope="col">Actions</th>
+                 
+        </tr>
+    </thead>
+ <tbody>
+   {% for velo in velos %}
+        <tr>
+         <th scope="row">{{velo.id}}</th>
+            <td>{{velo.model}}</td>
+            
+            {# <td>{{velo.image}}</td> #}
+           
+            {% if velo.description|length > 50 %}
+            <td>{{velo.description|slice(0, 47)}}...</td>
+            {% else %}
+            <td>{{velo.description}}</td>
+            {% endif %}
+          
+          <td>{{velo.categorie.velocategorie|default('')}}</td>
+          {# <td>{{roues.taillederoues}}</td> #}
+          {# <td>{{velos.capacitebatterie.capacitebatterie}}</td> #}
+           {# <td>{{velos.positiondebatterie.positiondebatterie}}</td> #} 
+          {# <td>{{velos.motor.motorisation}}</td> #} 
+          {# <td>{{velos.vitesse.nombrevitesse}}</td> #}
+            <td>{{velo.prix}}€</td>
+           
+            
+            <td>  
+            {# <a class="btn btn-primary mt-2 mb-4" href="{{ path ('book_detail', {id:book.id})}}">Afficher</a> #}
+            <a class="btn btn-secondary mt-2 mb-4" href="{{ path ('velo_modification', {id:velo.id})}}">Modifier</a>
+            <a onclick="return confirm(' etes vous sur de vouloir supprimer ce vélo? ')" class="btn btn-danger mt-2 mb-4" href="{{ path ('velo_supprimer', {id: velo.id})}}">Supprimer</a>  
+            </td>    
+        </tr>
+    {% endfor %}  
+    <a class="btn btn-primary d-block mx-auto rounded-pill btn-lg mt-5 my-5 col-3" href="{{ path ('velo_add')}}">Ajouter un nouveau vélo</a> 
+    </tbody>
+ </table>
+ </div>
+{% endblock %}
+
+
+
+{# btn btn-primary mt-2 mb-4 #}

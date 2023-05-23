@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vélos femmes{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
+    {% for key, velo in velos %}
+      <div class="col mb-4">
+        <div class="card h-100">
+          <img src="{{vich_uploader_asset(velo, 'imageFile')}} " class="card-img-top mt-1">
+          <div class="card-body ">
+            <h5 class="card-title text-center">{{velo.prix}}€</h5>
+            <p class="card-text text-center">{{velo.model}}</p>
+            <a href="{{ path('page_detail', {id: velo.id}) }}" class="btn btn-primary d-flex align-items-center justify-content-center">En savoir plus</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

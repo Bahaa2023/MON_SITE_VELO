@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}formulaire{% endblock %}
+
+{% block body %}
+<div class="container">
+ <h1>Ajout un vélo</h1>
+  {{form_start(newvelo)}}
+   <div class="row">
+   <div class="col-3">
+  {{form_row(newvelo.model)}} 
+   </div>
+   <div class="col-3">
+  {{form_row(newvelo.prix)}}
+   </div>
+   {# <div class="col">
+  {{form_row(newvelo.images)}}
+   </div> #}
+   <div class="col-3">
+  {{form_row(newvelo.description)}}
+   </div>
+   <div class="col-3">
+  {{form_row(newvelo.categorie)}}
+   </div>
+   <div class="col-3">
+  {{form_row(newvelo.roues)}}
+   </div>
+   <div class="col-3">
+  {{form_row(newvelo.capacitebatterie)}}
+   </div>
+   <div class="col-3">
+  {{form_row(newvelo.positiondebatterie)}}
+   </div>
+   <div class="col-3">
+  {{form_row(newvelo.motor)}}
+   </div>
+    <div class="col-3">
+  {{form_row(newvelo.vitesse)}}
+   </div>
+    <div class="col-6">
+  {{form_row(newvelo.imageFile)}}
+   </div>
+</div>
+
+  <input type="submit" class="btn btn-primary mt-2 mb-4" value="Enregistrer"/>
+{{form_end(newvelo)}}
+</div>
+{% endblock %}
