@@ -11,13 +11,20 @@
           Nous avons une grande variété de vélos électriques à choisir, chacun avec ses propres spécificités et couleurs. tous nos vélos sont fabriqués en France. Que vous cherchiez un vélo électrique pour vos déplacements quotidiens ou pour vos aventures en plein air, nous avons le modèle qui conviendra le mieux à vos besoins.<br>
           Notre processus d'achat est simple et pratique. Vous avez la possibilité de commander votre vélo électrique en ligne et de choisir de le récupérer sur place pour être sûr qu'il est disponible. Toutefois, si vous préférez voir et essayer les vélos avant de faire votre achat, nous vous encourageons à venir sur place et à visiter notre magasin, nous serons ravi de vous accueillir. Notre équipe spécialisée de vélos sera là pour vous guider et vous aider à trouver le vélo parfait pour vous. 
           </p>
-        </section>
+        {# </section>
         <div class="container-fluid">
           <div class="row">
             <img src="{{asset ('images/velos/forest.jpg')}}" class="col-10 m-auto d-none d-lg-block rounded-5" alt="Un paysage de nature avec des cyclistes en mouvement.">
           </div>
         </div>
+        <section> #}
         <section>
+  <div class="container-fluid">
+    <div class="row">
+      <img src="{{ asset('images/velos/forest.jpg') }}" class="col-10 m-auto d-none d-lg-block rounded-5 aos-init" alt="Un paysage de nature avec des cyclistes en mouvement." data-aos="fade-down" data-aos-duration="9000">
+    </div>
+  </div>
+</section>
           <hr>
           <h2 class="fw-bold">Un moyen de transport écologique, mais pas que...</h2>
           <hr>
@@ -31,4 +38,12 @@
         </p>
        </section>
      </main>
+{% endblock %}
+{% block javascripts %}
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000, // Default duration for other animations
+  });
+</script>
 {% endblock %}
