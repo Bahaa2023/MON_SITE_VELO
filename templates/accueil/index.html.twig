@@ -6,7 +6,7 @@
 
  {% if is_granted ('ROLE_USER') %} 
 {# note below the app.user is a great advantage in the user table only that allows to recuper les donnes de user without creating a variable the require getrepository and mananger registry etc like other tables. #}
-    <h1>Bienvenue {{ app.user.prenom|upper }} chez vélocity, Ravi de vous revoir.</h1>
+    <h1>Bienvenue {{ app.user.prenom|upper }}, ravi de vous revoir !</h1>
     {% endif %}
 
   <main>
@@ -54,10 +54,10 @@
 <section class="container-fluid p-4" id="apropos">
   <div class="row text-center m-auto">
     <div class="col-6 d-none d-lg-block" data-aos="fade-right" data-aos-duration="2500">
-      <img src="{{asset('images/vélofemme.png')}}" id="portrait" class="w-100 rounded-5" style="height: 100%;" alt="une femme sur un vélo">    
+      <img src="{{asset('images/velos/vélofemme.png')}}" id="portrait" class="w-100 rounded-5" style="height: 100%;" alt="une femme sur un vélo">    
     </div>
     <div class="col-6 d-none d-lg-block" data-aos="fade-left" data-aos-duration="2500">
-      <img src="{{asset('images/vélohomme.jpg')}}" id="portrait" class="w-100 h-auto rounded-5" alt="un homme sur un vélo">
+      <img src="{{asset('images/velos/vélohomme.jpg')}}" id="portrait" class="w-100 h-auto rounded-5" alt="un homme sur un vélo">
     </div> 
   </div>
 </section> 
