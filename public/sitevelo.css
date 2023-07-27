@@ -194,5 +194,15 @@ main h2,h1 {
 
 }
 
+#app-container {
+  min-height: 100%;
+  overflow-x: hidden;
+}
 
+.badge-topnav {
+  --bs-badge-padding-x:0.55em;
+}
 
+.min-content {
+  min-height: 50vh;
+}

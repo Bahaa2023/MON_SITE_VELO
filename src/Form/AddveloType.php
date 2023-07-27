@@ -18,6 +18,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+
 class AddveloType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -35,42 +36,43 @@ class AddveloType extends AbstractType
             ->add('categorie', EntityType::class, [
                 'required' => false,
                 'class' => Categorie::class,
-                'choice_label' =>'velocategorie'
-               ])
+                'choice_label' => 'velocategorie'
+            ])
 
-               ->add('roues', EntityType::class, [
+            ->add('roues', EntityType::class, [
                 'required' => false,
                 'class' => Taillederoue::class,
-                'choice_label' =>'taille_roue'
-               ])
+                'choice_label' => 'taille_roue'
+            ])
 
-               ->add('capacitebatterie', EntityType::class, [
+            ->add('capacitebatterie', EntityType::class, [
                 'required' => false,
                 'class' => Capacitebatterie::class,
-                'choice_label' =>'capacitebatterie'
-               ])
+                'choice_label' => 'capacitebatterie'
+            ])
 
-               
-               ->add('positiondebatterie', EntityType::class, [
+
+            ->add('positiondebatterie', EntityType::class, [
                 'required' => false,
                 'class' => Positiondebatterie::class,
-                'choice_label' =>'positionbatterie'
-               ])
+                'choice_label' => 'positionbatterie'
+            ])
 
-               ->add('motor', EntityType::class, [
+            ->add('motor', EntityType::class, [
                 'required' => false,
                 'class' => Motorisation::class,
-                'choice_label' =>'taille_motor'
-               ])
+                'choice_label' => 'taille_motor'
+            ])
 
-               ->add('vitesse', EntityType::class, [
+            ->add('vitesse', EntityType::class, [
                 'required' => false,
                 'class' => Nombredevitesse::class,
-                'choice_label' =>'nombre_vitesse'
-               ])
+                'choice_label' => 'nombre_vitesse'
+            ])
 
-               ->add('imageFile', FileType::class)
-        ;
+            ->add('imageFile', FileType::class, [
+                'required' => false,
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

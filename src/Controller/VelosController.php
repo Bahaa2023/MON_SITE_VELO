@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 // note the use below was added manually 
 use App\Form\AddveloType;
-
+use Symfony\Component\HttpFoundation\File\File;
 
 class VelosController extends AbstractController
 {
@@ -61,10 +61,10 @@ class VelosController extends AbstractController
     public function add(ManagerRegistry $doctrine, Request $request)
     {
         $velo = new Velos;
-        $newvelo =$this->createForm(AddveloType::class, $velo);
+        $newvelo = $this->createForm(AddveloType::class, $velo);
         $newvelo->handleRequest($request);
-        if($newvelo->isSubmitted() && $newvelo->isValid())
-        {
+        if ($newvelo->isSubmitted() && $newvelo->isValid()) {
+            $velo->setStock(0);
             $entityManager = $doctrine->getManager();
             $entityManager->persist($velo);
             $entityManager->flush();
@@ -72,27 +72,27 @@ class VelosController extends AbstractController
             return $this->redirectToRoute('velos_list');
         }
         return $this->render('velos/add.html.twig', [
-            "newvelo"=>$newvelo->createView()
+            "newvelo" => $newvelo->createView()
         ]);
-   }
-   
+    }
+
     /**
      * @Route("/velo/modification/{id}", name="velo_modification")
      */
     public function modification(Request $request, ManagerRegistry $doctrine, $id)
     {
-        $velo= $doctrine->getRepository(Velos::class)->find($id);
-        $velomodification =$this->createForm(AddveloType::class, $velo);
+        $velo = $doctrine->getRepository(Velos::class)->find($id);
+        $velo->setImageFile(null);
+        $velomodification = $this->createForm(AddveloType::class, $velo);
         $velomodification->handleRequest($request);
-        if($velomodification->isSubmitted() && $velomodification->isValid())
-        {
+        if ($velomodification->isSubmitted() && $velomodification->isValid()) {
             $entityManager = $doctrine->getManager();
             $entityManager->flush();
-            $this->addFlash('velo_modification_request', "La modification que vous avez effectuée a été enregistrée !");
+            $this->addFlash('velo_modification_request', "La modification que vous avez effectuée a bien été enregistrée !");
             return $this->redirectToRoute('velos_list');
         }
         return $this->render('velos/modification.html.twig', [
-            "velomodification"=>$velomodification->createView()
+            "velomodification" => $velomodification->createView()
         ]);
     }
 
@@ -101,19 +101,18 @@ class VelosController extends AbstractController
      */
     public function supprimer(ManagerRegistry $doctrine, $id)
     {
-         
+
         $entityManager = $doctrine->getManager();
-        
-        $velo= $doctrine->getRepository(Velos::class)->find($id);
+
+        $velo = $doctrine->getRepository(Velos::class)->find($id);
 
         $entityManager->remove($velo);
 
         $entityManager->flush();
 
-        
+
         $this->addFlash('velo_supprimer_request', " Votre vélo a bien été supprimé !");
-     
+
         return $this->redirectToRoute('velos_list');
     }
-
 }

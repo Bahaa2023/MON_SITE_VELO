@@ -2,7 +2,7 @@
 
 {% block title %}Hello PanierController!{% endblock %}
 {% block body %}
-<div class="container mt-4">
+<div class="container mt-4 min-content">
     <h1>Vos Achats</h1>
 
      {% if items is empty %}
@@ -10,28 +10,11 @@
     {% else %}
 
     <a href="{{ path('panier_clear') }}" onclick="return confirm('Etes-vous sure de vouloir vider tout le panier ?');" class="btn btn-warning mb-2"><i class="fas fa-trash-alt me-1"></i> Supprimer vos articles</a>
-       <a href="{{ path('page_gallerie', {id: 1})}}" class="btn btn-danger mb-2"> Continuez vos cours</a>       
-    
-     <table class="table table-dark table-striped"> 
+       <a href="{{ path('page_gallerie', {id: 1})}}" class="btn btn-danger mb-2"> Continuez vos achats</a>       
+    <table class="table table-dark table-striped"> 
      <table class="table table-light table-striped custom-table">
 
-     
-     {# {% if app.request.uri == '/gallerie/1' %}
-        <a href="{{ path('page_gallerie', {'id': 1}) }}" class="btn btn-danger mb-2">Continuez vos cours</a>
-    {% elseif app.request.uri == '/gallerie/2' %}
-        <a href="{{ path('page_gallerie', {'id': 2}) }}" class="btn btn-danger mb-2">Continuez vos cours</a>
-    {% endif %}  #}
-
-
-{# another possible way #}
-{# {% if current_page == 'gallery_femme' and clicked_continue_shopping %}
-    {% set redirect_url = path('gallery_femme') %}
-{% elseif current_page == 'gallery_homme' and clicked_continue_shopping %}
-    {% set redirect_url = path('gallery_homme') %}
-{% endif %} #}
-
-
-        <thead>
+       <thead>
             <tr>
                 <th scope="col">Vélo</th>
                 <th scope="col">Model</th> 
@@ -48,7 +31,23 @@
             <th scope="row"><img src="{{vich_uploader_asset(item.velos, 'imageFile')}} " class="card-img-top mt-1" style="width: 10rem; height: auto;"></th>        
                 <td>{{ item.velos.model }}</td>
                  <td>{{ item.velos.prix }}€</td> 
-                <td>{{ item.quantite }} </td>
+                <td>
+                    {{ item.quantite }} 
+                     {# <a href="{{ path('ajouter_panier', {id: item.velos.id}) }}">
+                     <button class="btn btn-primary btn-xs">
+                     +
+                     </button>
+                    </a>
+                      <a href="{{ path('enlever_panier', {id: item.velos.id}) }}">
+                      <button class="btn btn-primary btn-xs">
+                     -
+                     </button>
+                    </a> #}
+                    <a href="{{ path("ajouter_panier", {id: item.velos.id})}}" class="btn btn-danger" target="_self">+</a>
+                    <a href="{{path('enlever_panier', {id: item.velos.id})}}" class="btn btn-danger">-
+                    </a>
+                    
+                </td>
                  <td>{{ item.velos.prix * item.quantite }} €</td> 
                 
                 <td>

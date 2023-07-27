@@ -35,17 +35,10 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">Model</th>
-              <th scope="col">Description</th>
-              <th scope="col">Categorie</th>  
-               {# <th scope="col">Taille de roue</th>   #}
-                {# <th scope="col">Capcité de Batterie</th>   #}
-                {# <th scope="col">Position de Batterie</th>   #}
-                {# <th scope="col">Taille de Motor</th>   #}
-                 {# <th scope="col">Vitesse</th>   #}
+            <th scope="col">Description</th>
+            <th scope="col">Categorie</th>  
             <th scope="col">Prix</th>
-            {# <th scope="col">Image</th> #}
-            <th scope="col">Actions</th>
-                 
+            <th scope="col">Actions</th>         
         </tr>
     </thead>
  <tbody>
@@ -63,16 +56,10 @@
             {% endif %}
           
           <td>{{velo.categorie.velocategorie|default('')}}</td>
-          {# <td>{{roues.taillederoues}}</td> #}
-          {# <td>{{velos.capacitebatterie.capacitebatterie}}</td> #}
-           {# <td>{{velos.positiondebatterie.positiondebatterie}}</td> #} 
-          {# <td>{{velos.motor.motorisation}}</td> #} 
-          {# <td>{{velos.vitesse.nombrevitesse}}</td> #}
             <td>{{velo.prix}}€</td>
            
             
             <td>  
-            {# <a class="btn btn-primary mt-2 mb-4" href="{{ path ('book_detail', {id:book.id})}}">Afficher</a> #}
             <a class="btn btn-secondary mt-2 mb-4" href="{{ path ('velo_modification', {id:velo.id})}}">Modifier</a>
             <a onclick="return confirm(' etes vous sur de vouloir supprimer ce vélo? ')" class="btn btn-danger mt-2 mb-4" href="{{ path ('velo_supprimer', {id: velo.id})}}">Supprimer</a>  
             </td>    

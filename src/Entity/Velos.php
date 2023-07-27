@@ -97,6 +97,7 @@ class Velos
 
     public function __construct()
     {
+
         $this->detailcommandes = new ArrayCollection();
     }
 

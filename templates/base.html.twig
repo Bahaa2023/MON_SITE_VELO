@@ -10,12 +10,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
     <link rel="stylesheet" href="{{ asset('sitevelo.css') }}">
+    
+
  </head>
 
 
 
 
 <body>
+<div id="app-container">
   <header>
     <nav class="navbar navbar-expand-lg bg-light">
       <div class="container-fluid">
@@ -27,10 +30,22 @@
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
           <ul class="navbar-nav">
-            <li class="nav-item d-lg-none">
-              <a class="nav-link  href="{{ path ('page_panier')}}">
+            <li class="nav-item d-lg-none position-relative">
+              <a class="nav-link"  href="{{ path ('page_panier')}}">
                 <i class="fa-solid fa-cart-shopping fa-xl ms-3"></i>
+                 {% if app.user %}
+                <span class="position-absolute top-0 start-35 translate-middle badge rounded-pill bg-danger badge-topnav">
+                {# {{app.session.get('panier') ? app.session.get('panier')| length :'0'}} #}
+                {% set panier = app.session.get('panier') %}
+                {% set qtePanier = 0 %}
+                {% for quantite in panier %}
+                  {% set qtePanier = qtePanier + quantite %}
+                {% endfor %}
+                {{ qtePanier }}
+                </span>
+                {% endif %}
               </a>
+             
             </li>
             <li class="nav-item active">
               <a class="nav-link ms-3 my-auto" href="{{ path ('page_accueil')}}">Accueil <span class="sr-only">(current)</span></a>
@@ -48,12 +63,18 @@
             <li class="nav-item ms-3">
               <a class="nav-link my-auto text-lg-center" href="{{ path ('page_quisommesnous')}}">Qui sommes nous?</a>
             </li>
+          
+            {% if not is_granted('ROLE_USER') %}
             <li class="nav-item ms-3 d-lg-none">
-              <a class="nav-link"  href="{{ path ('page_connexion')}}">Connexion</a>
+            <a class="nav-link" href="{{ path('page_connexion') }}">Connexion</a>
             </li>
-            <li class="nav-item ms-3 d-lg-none">
-              <a class="nav-link"  href="{{ path ('app_logout')}}">Déconnexion</a>
-            </li>
+            {% endif %}
+
+            {% if is_granted('ROLE_USER') %}
+                <li class="nav-item ms-3 d-lg-none">
+                    <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
+                </li>
+            {% endif %}
 
 
 
@@ -84,11 +105,23 @@
                       {% endif %}
 
 
-            <li class="nav-item text-lg-center d-none  ms-1 d-lg-block">
-              <a class="nav-link" href="{{ path ('page_panier')}}">
+            <li class="nav-item text-lg-center d-none  ms-1 d-lg-block position-relative">
+              <a class="nav-link position-relative" href="{{ path ('page_panier')}}">
                 <i class="fa-solid fa-cart-shopping fa-xl"></i>
                 <!--<p>Panier</p>-->
+                {% if app.user %}
+                <span class="position-absolute top-0 start-35 translate-middle badge rounded-pill bg-danger badge-topnav">
+                {# {{app.session.get('panier') ? app.session.get('panier')| length :'0'}} #}
+                {% set panier = app.session.get('panier') %}
+                {% set qtePanier = 0 %}
+                {% for quantite in panier %}
+                  {% set qtePanier = qtePanier + quantite %}
+                {% endfor %}
+                {{ qtePanier }}
+                </span>
+                {% endif %}
               </a>
+              
             </li>
           </ul>
         </div>
@@ -121,9 +154,19 @@
           </section>
         </div>
   </footer>
+  </div>
   
           <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
       {% block javascripts %}{% endblock %}       
 </body>
 </html>
-    
+
+{# to add on top 95-99:
+
+ <span class="badge bg-dark text-white ms-1 rounded-pill">
+ {{app.session.get('panier') ? app.session.get('panier')| length :'0'}}
+ </span>
+
+
+     #}
+

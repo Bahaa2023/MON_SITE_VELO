@@ -7,6 +7,7 @@ use App\Entity\Detailcommande;
 use App\Entity\Velos;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
@@ -50,55 +51,6 @@ class PanierController extends AbstractController
             "totalQuantity" => $totalQuantity,
         ]);
     }
-
-
-
-
-
-
-
-
-
-
-    // public function panier(SessionInterface $session, ManagerRegistry $doctrine)
-    // {
-    //     $panier = $session->get('panier', []);
-
-
-    //     $panierData = [];
-    //     foreach($panier as $id => $quantity)
-
-    //         {
-    //             $panierData[] = [
-    //                 "velos" => $doctrine->getRepository(Velos::class)->find($id),
-    //                 "detailcommande" =>$doctrine->getRepository(Detailcommande::class)->findOneBy(['velos' => $velo]);
-    //                 // "quantity" => $quantity
-
-    //             ];
-    //     }
-    //     $total = 0;
-    //     foreach($panierData as $id => $value)
-    //     {
-    //         $total += $value['velos']->getPrix() * $value['quantity'];
-    //     }
-    //     $totalQuantity = 0;
-    //     foreach($panierData as $id => $value)
-    //     {
-    //         $totalQuantity += $value['quantity'];
-    //     }
-
-
-
-
-
-
-    //     return $this->render('panier/index.html.twig', [
-    //         "items" => $panierData,
-    //         "total" => $total,
-    //         "totalQuantity" => $totalQuantity
-
-    //     ]);
-    // }
 
 
     /**
@@ -158,6 +110,33 @@ class PanierController extends AbstractController
         $session->remove('panier');
 
         #On redirige vers le panier
+        return $this->redirectToRoute('page_panier');
+    }
+
+    /**
+     * @Route("/panier/ajouter/{id}", name="ajouter_panier")
+     */
+    public function ajouter(int $id,  SessionInterface $session): RedirectResponse
+    {
+        $panier = $session->get('panier', []);
+
+        if (isset($panier[$id])) {
+            $panier[$id]++;
+        }
+        $session->set('panier', $panier);
+        return $this->redirectToRoute('page_panier');
+    }
+
+    /**
+     * @Route("/panier/enlever/{id}", name="enlever_panier")
+     */
+    public function enlever(int $id,  SessionInterface $session)
+    {
+        $panier = $session->get('panier', []);
+        if (!empty($panier[$id]) && $panier[$id] > 0) {
+            $panier[$id]--;
+        }
+        $session->set('panier', $panier);
         return $this->redirectToRoute('page_panier');
     }
 }

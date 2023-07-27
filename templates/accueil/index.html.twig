@@ -10,39 +10,43 @@
     {% endif %}
 
   <main>
-   <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="{{asset ('images/velos/image1.png')}}" class="d-block w-50 m-auto" alt="vélo électrique">
+    <div></div>
+      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+              <img src="{{asset ('images/velos/image1.png')}}" class="d-block w-50 m-auto" alt="vélo électrique">
+          </div>
+          <div class="carousel-item">
+              <img src="{{asset ('images/velos/image22.png')}}" class="d-block w-50 m-auto" alt="vélo électrique">
+          </div>
+          <div class="carousel-item">
+              <img src="{{asset ('images/velos/image5.png')}}" class="d-block w-50 m-auto" alt="vélo électrique">
+          </div>
+          <div class="carousel-item">
+              <img src="{{asset ('images/velos/image23.png')}}" class="d-block w-50 m-auto" alt="vélo électrique">
+          </div>
+          <div class="carousel-item">
+              <img src="{{asset ('images/velos/image3.png')}}" class="d-block w-50 m-auto" alt="vélo électrique">
+          </div>
+          <div class="carousel-item">
+              <img src="{{asset ('images/velos/image24.png')}}" class="d-block w-50 m-auto" alt="vélo électrique">
+          </div>
         </div>
-        <div class="carousel-item">
-            <img src="{{asset ('images/velos/image22.png')}}" class="d-block w-50 m-auto" alt="vélo électrique">
-        </div>
-        <div class="carousel-item">
-            <img src="{{asset ('images/velos/image5.png')}}" class="d-block w-50 m-auto" alt="vélo électrique">
-        </div>
-        <div class="carousel-item">
-            <img src="{{asset ('images/velos/image23.png')}}" class="d-block w-50 m-auto" alt="vélo électrique">
-        </div>
-        <div class="carousel-item">
-            <img src="{{asset ('images/velos/image3.png')}}" class="d-block w-50 m-auto" alt="vélo électrique">
-        </div>
-        <div class="carousel-item">
-            <img src="{{asset ('images/velos/image24.png')}}" class="d-block w-50 m-auto" alt="vélo électrique">
-        </div>
-   </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-   <section>
-          <h1>Bienvenue chez Vélocity</h1>
-          <hr>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    
+      <section>
+      {% if not is_granted('ROLE_USER') %}
+      <h1>Bienvenue chez Vélocity</h1>
+      {% endif %}
+      <hr>
           <p>
             Bienvenue dans notre entreprise de vélos électriques spécialisé pour les femmes et les hommes à Paris ! Nous sommes ravis de vous accueillir et de vous offrir une expérience de cyclisme électrique de qualité. Que vous soyez un cycliste urbain chevronné ou que vous cherchiez simplement à vous déplacer rapidement et facilement dans la ville, nos vélos électriques sont conçus pour répondre à vos besoins.
             <br>
