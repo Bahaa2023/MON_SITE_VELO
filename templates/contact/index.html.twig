@@ -23,9 +23,19 @@
   <div class="mb-3">
     {{form_row(form.email, {'label':'Votre email'})}}
   </div>
-  <div class="mb-3">
+  <div class="mb-2">
     {{form_row(form.message, {'label':'Comment pouvons-nous vous aider ? :'})}}
   </div>
+
+  {# below is the code that i added for captacha
+  must install the following bundle: composer require gregwar/captcha-bundle
+  change put some code in contacttype.php #}
+<div class="mb-3">
+   {{ form_row(form.captcha,{'label':'Veuillez saisir le code CAPTCHA : ' , 'width':200, 'height':50}) }}
+  </div>
+  
+ 
+
   <input type="submit" class = "btn btn-primary d-block mx-auto rounded-pill btn-lg" value="Envoyer">
 {{ form_end(form) }}
    </div>
